@@ -13,13 +13,13 @@ function NavBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Tooltip title="Open settings">
+          <Tooltip title="Main Page">
             <IconButton sx={{ pr: "5px", ml: ".5%" }}>
               <Avatar alt="logo" src="/assets/logo1.png" />
             </IconButton>
-          </Tooltip>{" "}
+          </Tooltip>
           <Typography
-            variant="h4"
+            variant="h5"
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
             Shopping-Card
