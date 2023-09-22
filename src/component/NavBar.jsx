@@ -11,7 +11,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 function NavBar() {
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ backgroundColor: "black !important" }}>
         <Toolbar disableGutters>
           <Tooltip title="Main Page">
             <IconButton sx={{ pr: "5px", ml: ".5%" }}>
@@ -29,6 +29,9 @@ function NavBar() {
               <IconButton
                 sx={{
                   padding: "10px",
+                  "&:hover": {
+                    border: "1px solid white",
+                  },
                 }}
               >
                 <ShoppingCartIcon
