@@ -13,7 +13,7 @@ const ProductCard = ({
   price,
   handleQuantityInc,
   handleQuantityDec,
-  handleAddToCard,
+  handleAddToCart,
   id,
 }) => {
   return (
@@ -83,7 +83,7 @@ const ProductCard = ({
             backgroundColor: "#00acc1 ",
             "&:hover": { backgroundColor: "#00acc1" },
           }}
-          onClick={()=>handleAddToCard(id)}
+          onClick={()=>handleAddToCart(id)}
         >
           Add to Card
         </Button>

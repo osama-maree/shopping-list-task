@@ -37,7 +37,7 @@ const ShoppingCart = ({ products }) => {
       )
     );
   };
-  const handleAddToCard = (index) => {
+  const handleAddToCart = (index) => {
     const productQuantity = product.find((prod) => prod.id === index);
     if (productQuantity.quantity === 0) return;
     const isFound = order?.find((prod) => prod?.id === index);
@@ -74,7 +74,7 @@ const ShoppingCart = ({ products }) => {
               setOrder={setOrder}
               handleQuantityInc={handleQuantityInc}
               handleQuantityDec={handleQuantityDec}
-              handleAddToCard={handleAddToCard}
+              handleAddToCart={handleAddToCart}
             />
           </Grid>
         ))}
