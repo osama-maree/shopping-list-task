@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ProductListItem = ({ name, price, image, quantity }) => {
+const ProductListItem = ({ name, price, image, quantity,id,handleRemove }) => {
   return (
     <List
       sx={{
@@ -45,7 +45,7 @@ const ProductListItem = ({ name, price, image, quantity }) => {
           }
         />
         <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="delete">
+          <IconButton edge="end" aria-label="delete" onClick={()=>handleRemove(id)}>
             <DeleteIcon color="error" />
           </IconButton>
         </ListItemSecondaryAction>
