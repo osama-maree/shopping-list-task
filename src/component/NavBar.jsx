@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <AppBar position="static">
-      <Container maxWidth="xl" sx={{ backgroundColor: "black !important" }}>
+      <Container maxWidth="xl" sx={{ backgroundColor: "#00acc1 !important" }}>
         <Toolbar disableGutters>
           <Tooltip title="Main Page">
             <IconButton sx={{ pr: "5px", ml: ".5%" }}>

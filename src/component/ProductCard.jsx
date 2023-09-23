@@ -6,7 +6,16 @@ import Typography from "@mui/material/Typography";
 import { Box, Button, CardActions, IconButton, Stack } from "@mui/material";
 import { RemoveCircleOutline } from "@mui/icons-material";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
-const ProductCard = ({ name, image, price }) => {
+const ProductCard = ({
+  name,
+  image,
+  quantity,
+  price,
+  handleQuantityInc,
+  handleQuantityDec,
+  handleAddToCard,
+  id,
+}) => {
   return (
     <Card sx={{ width: "350px", backgroundColor: "#e1bee7" }}>
       <CardMedia
@@ -41,16 +50,20 @@ const ProductCard = ({ name, image, price }) => {
           spacing={1}
           sx={{ bgcolor: "white", color: "#e1bee7", borderRadius: "10px" }}
         >
-          <IconButton size="small">
+          <IconButton
+            size="small"
+            disabled={quantity === 0}
+            onClick={() => handleQuantityDec(id)}
+          >
             <RemoveCircleOutline color="warning" />
           </IconButton>
           <Typography
             variant="body1"
             sx={{ display: "flex", alignItems: "center" }}
           >
-            {0}
+            {quantity}
           </Typography>
-          <IconButton size="small">
+          <IconButton size="small" onClick={() => handleQuantityInc(id)}>
             <ControlPointIcon color="success" />
           </IconButton>
         </Stack>
@@ -62,6 +75,7 @@ const ProductCard = ({ name, image, price }) => {
           alignItems: "center",
         }}
       >
+        
         <Button
           variant="contained"
           sx={{
@@ -69,6 +83,7 @@ const ProductCard = ({ name, image, price }) => {
             backgroundColor: "#00acc1 ",
             "&:hover": { backgroundColor: "#00acc1" },
           }}
+          onClick={()=>handleAddToCard(id)}
         >
           Add to Card
         </Button>
