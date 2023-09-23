@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
-import ProductCard from "./ProductCard"; 
+import ProductCard from "./ProductCard";
 import { Box } from "@mui/material";
 import PaginationComponent from "./Pagination.jsx";
+import { useShopping } from "../context/ShoppingContext.js";
 
 const ShoppingCart = ({ products }) => {
+  const { order, setOrder } = useShopping();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; 
+  const itemsPerPage = 12;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = products.slice(startIndex, endIndex);

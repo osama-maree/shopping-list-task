@@ -3,6 +3,7 @@ import PageNotFound from "./pages/PageNotFound.jsx";
 import Home from "./pages/Home.jsx";
 import { Box } from "@mui/material";
 import Layout from "./component/Layout.jsx";
+import Order from "./pages/Order.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "order",
+        element: <Order />,
       },
     ],
   },

@@ -8,6 +8,7 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <AppBar position="static">
@@ -25,23 +26,25 @@ function NavBar() {
             Shopping-Card
           </Typography>
           <Box sx={{ flexGrow: 0, mr: "2%" }}>
-            <Tooltip title="Open ">
-              <IconButton
-                sx={{
-                  padding: "10px",
-                  "&:hover": {
-                    border: "1px solid white",
-                  },
-                }}
-              >
-                <ShoppingCartIcon
+            <Link to="/order">
+              <Tooltip title="Open ">
+                <IconButton
                   sx={{
-                    color: "white",
-                    fontSize: "25px",
+                    padding: "10px",
+                    "&:hover": {
+                      border: "1px solid white",
+                    },
                   }}
-                />
-              </IconButton>
-            </Tooltip>
+                >
+                  <ShoppingCartIcon
+                    sx={{
+                      color: "white",
+                      fontSize: "25px",
+                    }}
+                  />
+                </IconButton>
+              </Tooltip>
+            </Link>
           </Box>
         </Toolbar>
       </Container>
