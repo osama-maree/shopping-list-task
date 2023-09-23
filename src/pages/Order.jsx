@@ -6,12 +6,16 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import ProductListItem from "../component/ProductListItem.jsx";
 import { useShopping } from "../context/ShoppingContext.js";
-
+import TransitionsModal from "../component/ModalForm.jsx";
 const Order = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const { order, setOrder } = useShopping();
+
   const handleRemove = (id) => {
     setOrder(order.filter((ord) => ord.id !== id));
   };
@@ -62,6 +66,20 @@ const Order = () => {
           Please Add Item To Your Cart!&#128516;
         </Alert>
       )}
+      {order.length > 0 && (
+        <Button
+          onClick={handleOpen}
+          variant="contained"
+          sx={{
+            backgroundColor: "#00acc1",
+            "&:hover": { backgroundColor: "#00acc1" },
+            marginBottom: "1rem",
+          }}
+        >
+          Submit
+        </Button>
+      )}
+      <TransitionsModal open={open} handleClose={handleClose} />
     </Container>
   );
 };
