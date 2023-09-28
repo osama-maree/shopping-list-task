@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
-const ShoppingContext = createContext();
+export const ShoppingContext = createContext();
 
 const ShoppingProvider = ({ children }) => {
   const [order, setOrder] = useState([]);
@@ -15,9 +15,6 @@ const ShoppingProvider = ({ children }) => {
       {children}
     </ShoppingContext.Provider>
   );
-};
-export const useShopping = () => {
-  return useContext(ShoppingContext);
 };
 
 export default ShoppingProvider;

@@ -7,19 +7,19 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import ProductListItem from "../component/ProductListItem.jsx";
-import { useShopping } from "../context/ShoppingContext.js";
 import TransitionsModal from "../component/ModalForm.jsx";
+import MemoizedComponent from "../component/ProductListItem.jsx";
+import useShopping from "../context/useShopping.jsx";
 const Order = () => {
-  const [open, setOpen] = React.useState(false);
+  const [isOpen, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const onClose = () => setOpen(false);
   const { order, setOrder } = useShopping();
 
   const handleRemove = (id) => {
     setOrder(order.filter((ord) => ord.id !== id));
   };
-  let TotalAmmount = order.reduce((accumulator, product) => {
+  let totalAmount = order.reduce((accumulator, product) => {
     const { quantity, price } = product;
     return accumulator + quantity * price;
   }, 0);
@@ -41,13 +41,13 @@ const Order = () => {
           variant="outlined"
           sx={{ color: "#00acc1", border: "solid 1px #00acc1" }}
         >
-          Total Price: {TotalAmmount}
+          Total Price: {totalAmount}
         </Button>
       </Box>
       <Divider />
       {order.length > 0 ? (
         order.map((product, index) => (
-          <ProductListItem
+          <MemoizedComponent
             key={index}
             {...product}
             handleRemove={handleRemove}
@@ -66,7 +66,7 @@ const Order = () => {
           Please Add Item To Your Cart!&#128516;
         </Alert>
       )}
-      {order.length > 0 && (
+      {!!order.length && (
         <Button
           onClick={handleOpen}
           variant="contained"
@@ -79,7 +79,7 @@ const Order = () => {
           Submit
         </Button>
       )}
-      <TransitionsModal open={open} handleClose={handleClose} />
+      <TransitionsModal isOpen={isOpen} onClose={onClose} />
     </Container>
   );
 };

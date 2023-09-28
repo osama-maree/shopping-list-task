@@ -34,9 +34,8 @@ const style = {
   p: 4,
 };
 
-export default function TransitionsModal({ handleClose, open }) {
+export default function TransitionsModal({ onClose, isOpen }) {
   const handleSubmit = (values, { resetForm }) => {
-    console.log("Submitted values:", values);
     resetForm();
   };
   return (
@@ -44,8 +43,8 @@ export default function TransitionsModal({ handleClose, open }) {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
+        open={isOpen}
+        onClose={onClose}
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
         slotProps={{
@@ -54,7 +53,7 @@ export default function TransitionsModal({ handleClose, open }) {
           },
         }}
       >
-        <Fade in={open}>
+        <Fade in={isOpen}>
           <Box sx={style}>
             <Typography
               id="transition-modal-title"

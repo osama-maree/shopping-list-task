@@ -1,7 +1,7 @@
 import React from "react";
 import ShoppingCart from "../component/ShoppingCart.jsx";
 import { Box } from "@mui/material";
-import { products } from "../component/product.js";
+import { products } from "../data/product.js";
 const Home = () => {
   return (
     <Box maxWidth="95%" margin="auto" my={3}>

@@ -3,7 +3,7 @@ import { Pagination, Stack } from "@mui/material";
 
 const itemsPerPage = 12;
 
-const PaginationComponent = ({ totalItems, currentPage, onPageChange }) => {
+const PaginationCard= ({ totalItems, currentPage, onPageChange }) => {
   const pageCount = Math.ceil(totalItems / itemsPerPage);
   const handlePageChange = (event, value) => {
     onPageChange(value);
@@ -23,4 +23,4 @@ const PaginationComponent = ({ totalItems, currentPage, onPageChange }) => {
   );
 };
 
-export default PaginationComponent;
+export default PaginationCard;

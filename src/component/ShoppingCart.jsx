@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import ProductCard from "./ProductCard";
 import { Box } from "@mui/material";
-import PaginationComponent from "./Pagination.jsx";
-import { useShopping } from "../context/ShoppingContext.js";
+import useShopping from "../context/useShopping.jsx";
+import Pagination from "./Pagination.jsx";
 
 const ShoppingCart = ({ products }) => {
   const { setOrder, order } = useShopping();
@@ -12,10 +12,7 @@ const ShoppingCart = ({ products }) => {
   const itemsPerPage = 12;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  let currentData = product.slice(startIndex, endIndex);
-  useEffect(() => {
-    currentData = product.slice(startIndex, endIndex);
-  }, [product]);
+  const currentData = product.slice(startIndex, endIndex);
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -23,7 +20,7 @@ const ShoppingCart = ({ products }) => {
     setProduct(
       product.map((prod) =>
         prod.id === index
-          ? { ...prod, quantity: prod.quantity == 0 ? 1 : prod.quantity + 1 }
+          ? { ...prod, quantity: prod.quantity === 0 ? 1 : prod.quantity + 1 }
           : { ...prod }
       )
     );
@@ -32,7 +29,7 @@ const ShoppingCart = ({ products }) => {
     setProduct(
       product.map((prod) =>
         prod.id === index
-          ? { ...prod, quantity: prod.quantity == 0 ? 0 : prod.quantity - 1 }
+          ? { ...prod, quantity: prod.quantity === 0 ? 0 : prod.quantity - 1 }
           : { ...prod }
       )
     );
@@ -79,7 +76,7 @@ const ShoppingCart = ({ products }) => {
           </Grid>
         ))}
       </Grid>
-      <PaginationComponent
+      <Pagination
         totalItems={products.length}
         currentPage={currentPage}
         onPageChange={handlePageChange}

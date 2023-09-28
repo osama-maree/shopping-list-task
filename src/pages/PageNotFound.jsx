@@ -2,7 +2,7 @@ import React from "react";
 import "../style/pagenotfound.css";
 const PageNotFound = () => {
   return (
-    <div className="main">
+    <div className="main" style={{ height: "100vh" }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

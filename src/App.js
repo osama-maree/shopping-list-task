@@ -1,23 +1,35 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import PageNotFound from "./pages/PageNotFound.jsx";
-import Home from "./pages/Home.jsx";
 import { Box } from "@mui/material";
+import { Suspense, lazy } from "react";
 import Layout from "./component/Layout.jsx";
-import Order from "./pages/Order.jsx";
-
+const PageNotFound = lazy(() => import("./pages/PageNotFound.jsx"));
+const Order = lazy(() => import("./pages/Order.jsx"));
+const Home = lazy(() => import("./pages/Home.jsx"));
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "/",
     element: <Layout />,
-    errorElement: <PageNotFound />,
+    errorElement: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <PageNotFound />
+      </Suspense>
+    ),
     children: [
       {
         index: true,
-        element: <Home />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "order",
-        element: <Order />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Order />
+          </Suspense>
+        ),
       },
     ],
   },

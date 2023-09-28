@@ -10,7 +10,14 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const ProductListItem = ({ name, price, image, quantity,id,handleRemove }) => {
+const ProductListItem = ({
+  name,
+  price,
+  image,
+  quantity,
+  id,
+  handleRemove,
+}) => {
   return (
     <List
       sx={{
@@ -45,7 +52,11 @@ const ProductListItem = ({ name, price, image, quantity,id,handleRemove }) => {
           }
         />
         <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="delete" onClick={()=>handleRemove(id)}>
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => handleRemove(id)}
+          >
             <DeleteIcon color="error" />
           </IconButton>
         </ListItemSecondaryAction>
@@ -53,5 +64,5 @@ const ProductListItem = ({ name, price, image, quantity,id,handleRemove }) => {
     </List>
   );
 };
-
-export default ProductListItem;
+const MemoizedComponent = React.memo(ProductListItem);
+export default MemoizedComponent;
